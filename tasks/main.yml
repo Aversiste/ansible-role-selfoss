@@ -106,6 +106,6 @@
 - name: Ensure feeds are updated with a cron job
   cron:
     name: "Update feeds for {{ selfoss_username }}"
-    minute: "*/15"
+    hour: "*/1"
     job: "sleep $((RANDOM \\% 300)) && {{ selfoss_php_path }} {{ selfoss_install_dir }}/cliupdate.php"
     user: "{{ selfoss_www_user }}"
