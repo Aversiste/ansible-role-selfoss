@@ -9,7 +9,7 @@ galaxy_info:
   platforms:
     - name: OpenBSD
       versions:
-        - 6.5
+        - 7.4
   galaxy_tags:
     - selfoss
 dependencies: []
