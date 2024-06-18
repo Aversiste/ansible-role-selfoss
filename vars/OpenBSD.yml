@@ -1,4 +1,7 @@
 ---
-___selfoss_php_path: /usr/local/bin/php-7.4
+___selfoss_php_path: "/usr/local/bin/php-{{ __selfoss_php_short_version }}"
 ___selfoss_www_user: www
 ___selfoss_www_group: daemon
+__selfoss_packages:
+  - selfoss
+  - "php-pdo_sqlite-{{ selfoss_php_version }}"

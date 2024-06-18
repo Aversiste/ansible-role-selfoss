@@ -4,6 +4,9 @@ selfoss_install_dir: "{{ selfoss_default_install_dir }}"
 __selfoss_url: "{{ selfoss_url | mandatory }}"
 __selfoss_username: "{{ selfoss_username | mandatory }}"
 __selfoss_password: "{{ selfoss_password | mandatory }}"
+selfoss_packages: "{{ __selfoss_packages }}"
+selfoss_php_version: 7.4.33
+__selfoss_php_short_version: "{{ (selfoss_php_version | split('.'))[0:2] | join('.') }}"
 selfoss_special_time: daily
 
 # System specific variables, to be defined in vars/{{ ansible_os_family }}.yml

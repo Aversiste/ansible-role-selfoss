@@ -1,31 +1,31 @@
 ---
 - name: Install selfoss package and dependencies
   ansible.builtin.package:
-    name: ['selfoss', 'php-pdo_sqlite-7.4.27']
+    name: "{{ selfoss_packages }}"
     state: installed
 
 - name: Ensure allow_url_fopen is enabled in php.ini
   community.general.ini_file:
-    path: /etc/php-7.4.ini
+    path: "/etc/php-{{ __selfoss_php_short_version }}.ini"
     section: PHP
     option: allow_url_fopen
     value: 'On'
 
 - name: Ensure pdo-sqlite is enabled in php.ini
   ansible.builtin.file:
-    src: /etc/php-7.4.sample/pdo_sqlite.ini
-    dest: /etc/php-7.4/pdo_sqlite.ini
+    src: "/etc/php-{{ __selfoss_php_short_version }}.sample/pdo_sqlite.ini"
+    dest: "/etc/php-{{ __selfoss_php_short_version }}/pdo_sqlite.ini"
     state: link
 
 - name: Ensure gd is enabled in php.ini
   ansible.builtin.file:
-    src: /etc/php-7.4.sample/gd.ini
-    dest: /etc/php-7.4/gd.ini
+    src: "/etc/php-{{ __selfoss_php_short_version }}.sample/gd.ini"
+    dest: "/etc/php-{{ __selfoss_php_short_version }}/gd.ini"
     state: link
 
 - name: Ensure php-fpm is enabled and started
   ansible.builtin.service:
-    name: php74_fpm
+    name: "php{{ __selfoss_php_short_version | split('.') | join('') }}_fpm"
     enabled: yes
     state: started
 

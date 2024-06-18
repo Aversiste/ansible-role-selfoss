@@ -22,14 +22,17 @@ None
 | `selfoss_www_user` | UNIX user for the web server | `{{ ___selfoss_www_user }}` |
 | `selfoss_www_group` | UNIX group for the web server | `{{ ___selfoss_www_group }}` |
 | `selfoss_special_time` | cron special time | `daily` |
+| `selfoss_packages` | list of packages necessary for selfoss | `{{ __selfoss_packages }}` |
+| `selfoss_php_version` | PHP version installed for selfoss | `7.4.33` |
 
 ## OpenBSD
 
 | Variable | Default |
 |----------|---------|
-| `___selfoss_php_path` | `/usr/local/bin/php-7.1` |
+| `___selfoss_php_path` | `/usr/local/bin/php-{{ selfoss_php_version }}` |
 | `___selfoss_www_user` | `www` |
 | `___selfoss_www_group` | `daemon` |
+| `__selfoss_packages` | ['selfoss', 'php-pdo_sqlite'] |
 
 # Dependencies
 
